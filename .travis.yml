@@ -5,7 +5,7 @@ os:
   - osx
 
 julia:
-  - 1.1
+  - 1.2
   - nightly
 
 matrix:
@@ -16,18 +16,13 @@ matrix:
 notifications:
   email: false
 
-install:
-  - julia -e 'using Pkg; Pkg.add(PackageSpec(url="https://github.com/cvdlab/LinearAlgebraicRepresentation.jl"))'
-  - julia -e 'using Pkg; Pkg.add("ModernGL")'
-  - julia -e 'using Pkg; Pkg.add("GLFW")'
+services:
+  - xvfb
 
 addons:
   apt:
     packages:
     - xorg-dev
-    
-before_script:
-  - if [ "${TRAVIS_OS_NAME}" = "linux" ]; then export DISPLAY=:99.0; sh -e /etc/init.d/xvfb start; fi
   
 after_success:
   - julia -e 'using Pkg; Pkg.add("Coverage"); using Coverage; Codecov.submit(process_folder())'
