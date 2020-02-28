@@ -422,7 +422,7 @@ end
 
 
 """
-	GLGrid(V::Lar.Points,CV::Lar.Cells,color=GL.COLORS[1])::GL.GLMesh
+	GLGrid(V::Lar.Points,CV::Lar.Cells,color=GL.COLORS[1],alpha=0.2::Float64)::GL.GLMesh
 
 A grid is defined here as a cellular `p`-complex where all `p`-cells have the same arity, i.e. the same length as lists of vertices. E.g. are ``grids`` the sequences of points, lines, triangles, quads, `p`-cuboids.
 ```
